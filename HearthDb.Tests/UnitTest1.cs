@@ -1,10 +1,6 @@
-﻿#region
-
 using HearthDb.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-
-#endregion
 
 namespace HearthDb.Tests
 {
@@ -24,22 +20,6 @@ namespace HearthDb.Tests
 			Assert.AreEqual(5, Cards.All["AT_001"].Cost);
 			Assert.AreEqual(0, Cards.All["AT_001"].Attack);
 			Assert.AreEqual(2539, Cards.All["AT_001"].DbfId);
-		}
-
-		[TestMethod]
-		public void EntourageCardTest()
-		{
-			var animalCompanion = Cards.Collectible[CardIds.Collectible.Hunter.AnimalCompanion];
-			Assert.AreEqual(3, animalCompanion.EntourageCardIds.Length);
-			Assert.AreEqual(CardIds.NonCollectible.Hunter.Misha, animalCompanion.EntourageCardIds[0]);
-			Assert.AreEqual(CardIds.NonCollectible.Hunter.Leokk, animalCompanion.EntourageCardIds[1]);
-		}
-
-		[TestMethod]
-		public void EntourageCardTest_AnimalCompanion()
-		{
-			var animalCompanion = Cards.Collectible[CardIds.Collectible.Hunter.AnimalCompanion];
-			Assert.AreEqual(3, animalCompanion.EntourageCardIds.Length);
 		}
 
 		[TestMethod]
@@ -86,6 +66,42 @@ namespace HearthDb.Tests
 			var janalai = Cards.GetFromDbfId(50088);
 			Assert.IsFalse(janalai.Text.Contains("@"));
 			Assert.IsTrue(janalai.Text.Contains("If your Hero Power"));
+
+			var galakrond = Cards.GetFromDbfId(57419);
+			Assert.IsTrue(galakrond.Text.Contains("Draw 1 card."));
+			Assert.IsTrue(galakrond.Text.Contains("It costs (1)."));
+
+            var eyeOfCthun = Cards.All[CardIds.NonCollectible.Neutral.CThuntheShattered_EyeOfCthunToken];
+			Assert.IsTrue(eyeOfCthun.Text.Contains("(0/4)"));
+			Assert.IsTrue(eyeOfCthun.Text.Contains("7 damage randomly"));
+
+			var cramSession = Cards.All[CardIds.Collectible.Mage.CramSession];
+			Assert.IsTrue(cramSession.Text.Contains("Draw $1 card"));
+			Assert.IsTrue(cramSession.Text.Contains("improved by"));
+
+			var flameLance = Cards.All[CardIds.Collectible.Mage.FlameLance];
+			Assert.IsTrue(flameLance.GetLocText(Locale.frFR).Contains("Inflige $8 points"));
+
+			var elvenArcher = Cards.All[CardIds.Collectible.Neutral.ElvenArcher];
+			Assert.IsTrue(elvenArcher.Text.Contains("Deal 1 damage"));
+
+			var demonicPortal = Cards.All[CardIds.NonCollectible.Neutral.DemonicPortal];
+			Assert.IsTrue(demonicPortal.Text.Contains("30 left!"));
+
+			var summoningRitual = Cards.All[CardIds.NonCollectible.Demonhunter.SummoningRitual2];
+			Assert.IsTrue(summoningRitual.Text.Contains("Summon 3 demons"));
+			Assert.IsTrue(summoningRitual.Text.Contains("for 2 turns"));
+
+			var hatredReactor = Cards.All[CardIds.NonCollectible.Warlock.HatredReactorToken];
+			Assert.IsTrue(hatredReactor.Text.Contains("give it +1/+1"));
+
+		}
+
+		[TestMethod]
+		public void DeflectOBot_HasDivineShield()
+		{
+			Assert.AreEqual(1, Cards.All[CardIds.NonCollectible.Neutral.DeflectOBot].Entity.GetTag(GameTag.DIVINE_SHIELD));
+			Assert.AreEqual(1, Cards.All[CardIds.NonCollectible.Neutral.DeflectOBotTavernBrawl].Entity.GetTag(GameTag.DIVINE_SHIELD));
 		}
 	}
 }
