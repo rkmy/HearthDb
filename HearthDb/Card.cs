@@ -91,6 +91,8 @@ namespace HearthDb
 
 		public int Armor => Entity.GetTag(ARMOR);
 
+		public int SpellSchool => Entity.GetTag(SPELL_SCHOOL);
+
 		public string[] Mechanics
 		{
 			get
@@ -149,5 +151,7 @@ namespace HearthDb
 		public string GetLocFlavorText(Locale lang) => Entity.GetLocString(FLAVORTEXT, lang);
 
 		public bool IsWild => Helper.WildSets.Contains(Set);
+
+		public bool IsClassic => Helper.ClassicSets.Contains(Set);
 	}
 }

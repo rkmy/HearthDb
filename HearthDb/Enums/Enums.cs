@@ -53,6 +53,8 @@ namespace HearthDb.Enums
         BGT_PVPDR = 55,
         BGT_RESERVED_18_22 = 56,
         BGT_RESERVED_18_23 = 57,
+        BGT_RANKED_CLASSIC = 58,
+        BGT_CASUAL_CLASSIC = 59,
     }
 
     public enum BnetRegion
@@ -100,7 +102,25 @@ namespace HearthDb.Enums
         STANDARD_HUNTER = 470,
         YEAR_OF_DRAGON = 498,
         STANDARD_MAGE = 545,
+        THE_BARRENS = 553,
+        WAILING_CAVERNS = 583,
+        STORMWIND = 602,
+        GOLDEN_SCHOLOMANCE = 603,
         DARKMOON_FAIRE = 616,
+        STANDARD_DRUID = 631,
+        STANDARD_PALADIN = 632,
+        STANDARD_WARRIOR = 633,
+        STANDARD_PRIEST = 634,
+        STANDARD_ROGUE = 635,
+        STANDARD_SHAMAN = 636,
+        STANDARD_WARLOCK = 637,
+        STANDARD_DEMONHUNTER = 638,
+        GOLDEN_DARKMOON_FAIRE = 643,
+        GOLDEN_THE_BARRENS = 686,
+        YEAR_OF_THE_PHOENIX = 688,
+        STANDARD_PACK = 713,
+        WILD_PACK = 714,
+        GOLDEN_STANDARD_PACK = 716,
     }
 
     public enum BrawlType
@@ -134,7 +154,7 @@ namespace HearthDb.Enums
     {
         INVALID = 0,
         TEST_TEMPORARY = 1,
-        CORE = 2,
+        BASIC = 2,
         EXPERT1 = 3,
         HOF = 4,
         REWARD = 4,
@@ -182,6 +202,12 @@ namespace HearthDb.Enums
         BATTLEGROUNDS = 1453,
         DEMON_HUNTER_INITIATE = 1463,
         DARKMOON_FAIRE = 1466,
+        THE_BARRENS = 1525,
+        WAILING_CAVERNS = 1559,
+        STORMWIND = 1578,
+        LEGACY = 1635,
+        CORE = 1637,
+        VANILLA = 1646,
     }
 
     public enum CardTextBuilderType
@@ -227,6 +253,8 @@ namespace HearthDb.Enums
         HIDDEN_ENTITY = 24,
         SCORE_VALUE_COUNT_DOWN = 25,
         SCRIPT_DATA_NUM_1_NUM_2 = 26,
+        POWERED_UP = 27,
+        MULTIPLE_ALT_TEXT_SCRIPT_DATA_NUMS = 28,
     }
 
     public enum CardType
@@ -309,11 +337,12 @@ namespace HearthDb.Enums
         FT_UNKNOWN = 0,
         FT_WILD = 1,
         FT_STANDARD = 2,
+        FT_CLASSIC = 3,
     }
 
     public enum GameTag
     {
-        TAG_NOT_SET = 1,
+        TAG_NOT_SET = 0,
         IGNORE_DAMAGE = 1,
         TAG_SCRIPT_DATA_NUM_1 = 2,
         TAG_SCRIPT_DATA_NUM_2 = 3,
@@ -875,6 +904,8 @@ namespace HearthDb.Enums
         USE_LEADERBOARD_AS_SPAWN_ORIGIN = 1628,
         BACON_MUKLA_BANANA_SPAWN_COUNT = 1629,
         REPLACEMENT_ENTITY = 1632,
+        SPELL_SCHOOL = 1635,
+        FRENZY = 1637,
         COIN_MANA_GEM_FOR_CHOICE_CARDS = 1643,
         METAMORPHOSIS = 1644,
         HERO_POWER_ENTITY = 1646,
@@ -886,8 +917,10 @@ namespace HearthDb.Enums
         SOURCE_OVERRIDE_FOR_MODIFIER_TEXT = 1694,
         PENDING_TRANSFORM_TO_CARD = 1716,
         TRANSFORMED_FROM_CARD_VISUAL_TYPE = 1719,
+        BATTLEGROUNDS_DARKMOON_PRIZE_TURN = 1735,
         PLAYER_ID_LOOKUP = 1740,
         BACON_AVALANCHE = 1744,
+        SIGIL = 1749,
         PLAYED_CTHUN_EYE = 1764,
         PLAYED_CTHUN_BODY = 1765,
         PLAYED_CTHUN_MAW = 1766,
@@ -902,6 +935,33 @@ namespace HearthDb.Enums
         DARKMOON_TICKET = 1776,
         NUM_SPELLS_PLAYED_THIS_GAME = 1780,
         BACON_COMEONECOMEALL = 1789,
+        SHOW_DISCOVER_FROM_DECK = 1816,
+        MINI_SET = 1824,
+        CANT_TRIGGER_DEATHRATTLE = 1831,
+        CANT_MOVE_MINION = 1848,
+        DARKMOON_FAIRE_PRIZES_ACTIVE = 1895,
+        IGNORE_DECK_RULESET = 1896,
+        HAS_DIAMOND_QUALITY = 1932,
+        CURRENT_SPELLPOWER_ARCANE = 1936,
+        CURRENT_SPELLPOWER_FIRE = 1937,
+        CURRENT_SPELLPOWER_FROST = 1938,
+        CURRENT_SPELLPOWER_NATURE = 1939,
+        CURRENT_SPELLPOWER_HOLY = 1940,
+        CURRENT_SPELLPOWER_SHADOW = 1941,
+        CURRENT_SPELLPOWER_FEL = 1942,
+        CURRENT_SPELLPOWER_PHYSICAL = 1943,
+        NON_KEYWORD_POISONOUS = 1944,
+        SPELLPOWER_ARCANE = 1945,
+        SPELLPOWER_FIRE = 1946,
+        SPELLPOWER_FROST = 1947,
+        SPELLPOWER_NATURE = 1948,
+        SPELLPOWER_HOLY = 1949,
+        SPELLPOWER_SHADOW = 1950,
+        SPELLPOWER_FEL = 1951,
+        SPELLPOWER_PHYSICAL = 1952,
+        ENRAGED_TOOLTIP = 1954,
+        BLOOD_GEM = 1966,
+        GOLDSPARKLES_HINT = 1984,
     }
 
     public enum GameType
@@ -992,6 +1052,7 @@ namespace HearthDb.Enums
         SLUSH_TIME = 20,
         ARTIFICIAL_HISTORY_INTERRUPT = 21,
         POISONOUS = 22,
+        STUB_20_6_LETTUCE = 23,
     }
 
     public enum Mulligan
@@ -1077,6 +1138,7 @@ namespace HearthDb.Enums
         REQ_TARGET_MIN_ATTACK = 41,
         REQ_CAN_BE_TARGETED_BY_HERO_POWERS = 42,
         REQ_ENEMY_TARGET_NOT_IMMUNE = 43,
+        REQ_ALL_BASIC_TOTEMS_NOT_IN_PLAY = 44,
         REQ_ENTIRE_ENTOURAGE_NOT_IN_PLAY = 44,
         REQ_MINIMUM_TOTAL_MINIONS = 45,
         REQ_MUST_TARGET_TAUNTER = 46,
@@ -1136,6 +1198,9 @@ namespace HearthDb.Enums
         REQ_TARGET_IF_AVAILABLE_AND_BOUGHT_RACE_THIS_TURN = 105,
         REQ_TARGET_IF_AVAILABLE_AND_SOLD_RACE_THIS_TURN = 106,
         REQ_TWO_OF_A_KIND = 110,
+        REQ_TARGET_NOT_HAVE_TAG = 116,
+        REQ_TARGET_MUST_HAVE_TAG = 117,
+        REQ_NOT_LEGENDARY_TARGET = 123,
         REQ_DRAG_TO_PLAY = 999,
     }
 
@@ -1214,6 +1279,7 @@ namespace HearthDb.Enums
         BLANK = 25,
         ALL = 26,
         EGG = 38,
+        QUILBOAR = 43,
     }
 
     public enum Rarity
@@ -1246,6 +1312,20 @@ namespace HearthDb.Enums
         ADVENTURE_HERO_POWER = 13,
         ARCANE_ORBS = 14,
         DECK = 15,
+        MINI_SET = 16,
+    }
+
+    public enum SpellSchool
+    {
+        NONE = 0,
+        ARCANE = 1,
+        FIRE = 2,
+        FROST = 3,
+        NATURE = 4,
+        HOLY = 5,
+        SHADOW = 6,
+        FEL = 7,
+        PHYSICAL_COMBAT = 8,
     }
 
     public enum State
@@ -1328,6 +1408,7 @@ namespace HearthDb.Enums
         RAVEN = 3,
         DRAGON = 4,
         PHOENIX = 5,
+        GRYPHON = 6,
     }
 
     public enum Zone
@@ -1340,5 +1421,6 @@ namespace HearthDb.Enums
         REMOVEDFROMGAME = 5,
         SETASIDE = 6,
         SECRET = 7,
+        STUB_ZONE_8 = 8,
     }
 }
