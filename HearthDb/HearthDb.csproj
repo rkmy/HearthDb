@@ -1,13 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>HearthDb</AssemblyTitle>
     <Company>HearthSim</Company>
     <Product>HearthDb</Product>
-    <Copyright>Copyright © HearthSim 2020</Copyright>
-    <AssemblyVersion>19.0.0.0</AssemblyVersion>
-    <FileVersion>19.0.0.0</FileVersion>
+    <Copyright>Copyright © HearthSim 2021</Copyright>
+    <AssemblyVersion>23.2.0.0</AssemblyVersion>
+    <FileVersion>23.2.0.0</FileVersion>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
     <!-- Remove everything from the hsdata repo except for CardDefs.xml. -->
