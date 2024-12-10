@@ -59,7 +59,7 @@ namespace HearthDb.Tests
 		[TestMethod]
 		public void TestCardText()
 		{
-			var lucentbark = Cards.GetFromDbfId(51796, false);
+			var lucentbark = Cards.GetFromDbfId(51796);
 			System.Console.WriteLine(lucentbark.Text);
 			Assert.IsTrue(lucentbark.Text.Contains("(5 left!)"));
 
@@ -79,8 +79,8 @@ namespace HearthDb.Tests
 			Assert.IsTrue(cramSession.Text.Contains("Draw $1 card"));
 			Assert.IsTrue(cramSession.Text.Contains("improved by"));
 
-			var flameLance = Cards.All[CardIds.Collectible.Mage.FlameLance];
-			Assert.IsTrue(flameLance.GetLocText(Locale.frFR).Contains("Inflige $8 points"));
+			var flameLance = Cards.All[CardIds.Collectible.Mage.FlameLanceTGT];
+			Assert.IsTrue(flameLance.GetLocText(Locale.frFR).Contains("$25"));
 
 			var elvenArcher = Cards.All[CardIds.Collectible.Neutral.ElvenArcherVanilla];
 			Assert.IsTrue(elvenArcher.Text.Contains("Deal 1 damage"));

@@ -43,55 +43,32 @@ namespace HearthDb
 		private Race? _race;
 		public Race Race => _race ??= (Race)Entity.GetTag(CARDRACE);
 
-		private CardSet? _set;
-		public CardSet Set
+		private Race? _secondaryRace;
+
+		public Race SecondaryRace
 		{
 			get
 			{
-				if (_set == null)
+				if (_secondaryRace != null)
+					return (Race)_secondaryRace;
+
+				foreach (var tag in Entity.Tags)
 				{
-					// HACK to fix missing set value on Hall of Fame cards
-					if (new[]
+					Race retval;
+					if (RaceUtils.TagRaceMap.TryGetValue(tag.EnumId, out retval) && retval != Race)
 					{
-						CardIds.Collectible.Mage.IceBlock,
-						CardIds.Collectible.Neutral.ColdlightOracle,
-						CardIds.Collectible.Neutral.MoltenGiant,
-
-						//2019
-						CardIds.Collectible.Druid.Naturalize,
-						CardIds.Collectible.Warlock.Doomguard,
-						CardIds.Collectible.Paladin.DivineFavor,
-						CardIds.Collectible.Neutral.BakuTheMooneater,
-						CardIds.Collectible.Neutral.GennGreymane,
-						CardIds.Collectible.Druid.GloomStag,
-						CardIds.Collectible.Mage.BlackCat,
-						CardIds.Collectible.Priest.GlitterMoth,
-						CardIds.Collectible.Shaman.MurksparkEel,
-
-						//2020
-						CardIds.Collectible.Priest.AuchenaiSoulpriest,
-						CardIds.Collectible.Priest.HolyFire,
-						CardIds.Collectible.Priest.ShadowformHOF,
-						CardIds.Collectible.Priest.ProphetVelen,
-						CardIds.Collectible.Priest.DivineSpirit,
-						CardIds.Collectible.Priest.NorthshireCleric,
-						CardIds.Collectible.Neutral.AcolyteOfPain,
-						CardIds.Collectible.Neutral.Spellbreaker,
-						CardIds.Collectible.Neutral.MindControlTech,
-						CardIds.Collectible.Neutral.MountainGiant,
-						CardIds.Collectible.Neutral.LeeroyJenkins,
-					}.Contains(Id))
-					{
-						_set = CardSet.HOF;
-					}
-					else
-					{
-						_set = (CardSet)Entity.GetTag(CARD_SET);
+						_secondaryRace = retval;
+						return retval;
 					}
 				}
-				return _set.Value;
+
+				_secondaryRace = Race.INVALID;
+				return Race.INVALID;
 			}
 		}
+
+		private CardSet? _set;
+		public CardSet Set => _set ??= (CardSet)Entity.GetTag(CARD_SET);
 
 		public Faction Faction => (Faction)Entity.GetTag(FACTION);
 
@@ -183,6 +160,9 @@ namespace HearthDb
 		private bool? _isBaconPoolMinion;
 		public bool IsBaconPoolMinion => _isBaconPoolMinion ??= Entity.GetTag(IS_BACON_POOL_MINION) > 0;
 
+		private int? _battlegroundsArmorTier;
+		public int BattlegroundArmorTier => _battlegroundsArmorTier ??= Entity.GetTag((GameTag)1723);
+
 		private bool? _taunt;
 		public bool Taunt => _taunt ??= Entity.GetTag(TAUNT) > 0;
 
@@ -191,6 +171,9 @@ namespace HearthDb
 
 		private bool? _poisonous;
 		public bool Poisonous => _poisonous ??= Entity.GetTag(POISONOUS) > 0;
+
+		private bool? _venomous;
+		public bool Venomous => _venomous ??= Entity.GetTag(VENOMOUS) > 0;
 
 		private bool? _windfury;
 		public bool Windfury => _windfury ??= Entity.GetTag(WINDFURY) > 0;
